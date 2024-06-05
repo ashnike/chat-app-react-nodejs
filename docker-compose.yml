@@ -10,16 +10,16 @@ services:
     ports:
       - 5000:5000
     depends_on:
-      - mongo  # Ensure API starts only after MongoDB is ready
+      - mongo  #
     environment:
-      - MONGO_URL=mongodb://mongo:27017/chat  # Use container hostname for connection
+      - MONGO_URL=mongodb://mongo:27017/chat  
 
   mongo:
-    image: mongo:latest  # Use latest stable MongoDB image
+    image: mongo:latest  
     ports:
-      - 27017:27017  # Map container port to host port
+      - 27017:27017 
     volumes:
-      - mongo-data:/data/db  # Persist data volume for MongoDB
+      - mongo-data:/data/db  
 
 volumes:
-  mongo-data:  # Define the persistent data volume
+  mongo-data:  
