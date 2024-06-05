@@ -24,7 +24,15 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-
+          
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v1
+        with:
+          languages: javascript
+          
+      - name: Run CodeQL Analysis
+        uses: github/codeql-action/analyze@v1
+        
       - name: Build frontend Docker image
         run: |
           docker build -t chat-frontend ./public
