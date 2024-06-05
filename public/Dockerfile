@@ -1,5 +1,5 @@
 # Use a lightweight Node.js image
-FROM node:14-alpine AS build
+FROM node:16-alpine AS build
 
 # Set the working directory
 WORKDIR /app
@@ -8,7 +8,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install --production
+RUN npm install
 
 # Copy the application code
 COPY . .
@@ -17,7 +17,7 @@ COPY . .
 RUN npm run build
 
 # Use a lightweight Node.js image for serving the built application
-FROM node:14-alpine
+FROM node:16-alpine
 
 # Set the working directory
 WORKDIR /app
